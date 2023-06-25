@@ -25,13 +25,10 @@ class Solution {
             // 2. Add the current index to the queue
             dq.add(i);
 
-            // 3. For the first window only
-            if(i < k - 1) {
-                continue;
-            }
-
-            // 4. Time to collect the max number's index in the current window
-            output[i - k + 1] = nums[dq.getFirst()];
+            // 3. Time to collect the max number's index in the current window
+            // from k - 1 position onwards, we'll always get a window of size k
+            if(i >= k - 1)
+                output[i - k + 1] = nums[dq.getFirst()];
         }
 
         return output;
