@@ -1,7 +1,15 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 class Solution {
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] result = sol.maxSlidingWindow(new int[]{7,2,4}, 2);
+        Arrays.stream(result)
+                .forEach(System.out::println);
+    }
+
     // TC : O(n) -> dq operations are O(1) -> time spent while iterating the index, adding it to the dq and then again removing it.
     // SC : O(n - k + 1) -> output array size (can be ignored as it is expected by the question)
     public int[] maxSlidingWindow(int[] nums, int k) {
