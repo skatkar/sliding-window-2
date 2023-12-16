@@ -1,6 +1,8 @@
 package practice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Leetcode2405 {
@@ -27,5 +29,25 @@ public class Leetcode2405 {
 
         // right went outside the limit but there are still some characters left. Last substring
         return count + 1;
+    }
+
+    public int partitions(String s) {
+        List<String> list = new ArrayList<>();
+        int left = 0, right = 0;
+        Map<Character, Integer> map = new HashMap<>();
+
+        for(; right < s.length(); right++) {
+            char ch = s.charAt(right);
+            if(map.containsKey(ch)) {
+                list.add(s.substring(left, right));
+                left = right;
+                map.clear();
+            }
+            map.put(ch, right);
+        }
+
+        list.add(s.substring(left));
+
+        return list.size();
     }
 }
